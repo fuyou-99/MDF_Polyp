@@ -7,7 +7,7 @@ Official repository for MDF-Polyp: Multi-Domain Fusion Network for Enhanced Poly
 Requirements: `Ubuntu 20.04`, `CUDA 12.1`
 
 1. Create a virtual environment: `conda create -n MDF-Polyp python=3.10 -y` and `conda activate umamba `
-2. Install [Pytorch](https://pytorch.org/get-started/previous-versions/#linux-and-windows-4) 2.0.1: `pip install torch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 --index-url https://download.pytorch.org/whl/cu121`
+2. Install [Pytorch](https://pytorch.org/get-started/previous-versions/#linux-and-windows-4) 2.2.2: `pip install torch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 --index-url https://download.pytorch.org/whl/cu121`
 3. Install [Mamba](https://github.com/state-spaces/mamba): `pip install causal-conv1d>=1.2.0` and `pip install mamba-ssm --no-cache-dir`
 4. Download code: `git clone https://github.com/fuyou-99/MDF_Polyp`
 5. `cd MDF-Polyp/MDF-Polyp` and run `pip install -e .`
