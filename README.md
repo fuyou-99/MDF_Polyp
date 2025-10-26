@@ -21,11 +21,11 @@ import torch
 import mamba_ssm
 ```
 
-![network](https://github.com/bowang-lab/U-Mamba/blob/main/assets/U-Mamba-network.png)
+![network](https://github.com/fuyou-99/MDF_Polyp/blob/main/assets/MDF-Polyp-network.png)
 
 
 
-https://github.com/bowang-lab/U-Mamba/assets/19947331/1ac552d6-4ffd-4909-ba31-7b48644fd104
+
 
 
 
@@ -53,20 +53,6 @@ nnUNetv2_train DATASET_ID 2d all -tr nnUNetTrainerUMambaBot
 nnUNetv2_train DATASET_ID 2d all -tr nnUNetTrainerUMambaEnc
 ```
 
-### Train 3D models
-
-- Train 3D `U-Mamba_Bot` model
-
-```bash
-nnUNetv2_train DATASET_ID 3d_fullres all -tr nnUNetTrainerUMambaBot
-```
-
-- Train 3D `U-Mamba_Enc` model
-
-```bash
-nnUNetv2_train DATASET_ID 3d_fullres all -tr nnUNetTrainerUMambaEnc
-```
-
 
 ## Inference
 
@@ -82,7 +68,6 @@ nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_ID -c CONFIGURATION
 nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_ID -c CONFIGURATION -f all -tr nnUNetTrainerUMambaEnc --disable_tta
 ```
 
-> `CONFIGURATION` can be `2d` and `3d_fullres` for 2D and 3D models, respectively.
 
 ## Remarks
 
@@ -98,18 +83,6 @@ nnUNet_preprocessed = join(base, 'nnUNet_preprocessed') # or change to os.enviro
 nnUNet_results = join(base, 'nnUNet_results') # or change to os.environ.get('nnUNet_results')
 ```
 
-2. AMP could lead to nan in the Mamba module. We also provide a trainer without AMP: https://github.com/bowang-lab/U-Mamba/blob/main/umamba/nnunetv2/training/nnUNetTrainer/nnUNetTrainerUMambaEncNoAMP.py
-
-## Paper
-
-```
-@article{U-Mamba,
-    title={U-Mamba: Enhancing Long-range Dependency for Biomedical Image Segmentation},
-    author={Ma, Jun and Li, Feifei and Wang, Bo},
-    journal={arXiv preprint arXiv:2401.04722},
-    year={2024}
-}
-```
 
 
 ## Acknowledgements
