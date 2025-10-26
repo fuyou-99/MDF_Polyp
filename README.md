@@ -1,4 +1,4 @@
-# [U-Mamba](https://wanglab.ai/u-mamba.html)
+# [MDF_Polyp](https://github.com/fuyou-99/MDF_Polyp.html)
 
 Official repository for MDF-Polyp: Multi-Domain Fusion Network for Enhanced Polyp Segmentation in Colonoscopy Images
 
