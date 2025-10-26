@@ -1,4 +1,4 @@
-# [MDF_Polyp](https://github.com/fuyou-99/MDF_Polyp.html)
+# [MDF-Polyp](https://github.com/fuyou-99/MDF_Polyp)
 
 Official repository for MDF-Polyp: Multi-Domain Fusion Network for Enhanced Polyp Segmentation in Colonoscopy Images
 
