@@ -1,17 +1,16 @@
 # [U-Mamba](https://wanglab.ai/u-mamba.html)
 
-Official repository for U-Mamba: Enhancing Long-range Dependency for Biomedical Image Segmentation.
-Welcome to join our [mailing list](https://forms.gle/bLxGb5SEpdLCUChQ7) to get updates.
+Official repository for MDF-Polyp: Multi-Domain Fusion Network for Enhanced Polyp Segmentation in Colonoscopy Images
 
 ## Installation 
 
-Requirements: `Ubuntu 20.04`, `CUDA 11.8`
+Requirements: `Ubuntu 20.04`, `CUDA 12.1`
 
-1. Create a virtual environment: `conda create -n umamba python=3.10 -y` and `conda activate umamba `
-2. Install [Pytorch](https://pytorch.org/get-started/previous-versions/#linux-and-windows-4) 2.0.1: `pip install torch==2.0.1 torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cu118`
+1. Create a virtual environment: `conda create -n MDF-Polyp python=3.10 -y` and `conda activate umamba `
+2. Install [Pytorch](https://pytorch.org/get-started/previous-versions/#linux-and-windows-4) 2.0.1: `pip install torch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 --index-url https://download.pytorch.org/whl/cu121`
 3. Install [Mamba](https://github.com/state-spaces/mamba): `pip install causal-conv1d>=1.2.0` and `pip install mamba-ssm --no-cache-dir`
-4. Download code: `git clone https://github.com/bowang-lab/U-Mamba`
-5. `cd U-Mamba/umamba` and run `pip install -e .`
+4. Download code: `git clone https://github.com/fuyou-99/MDF_Polyp`
+5. `cd MDF-Polyp/MDF-Polyp` and run `pip install -e .`
 
 
 sanity test: Enter python command-line interface and run
@@ -24,65 +23,37 @@ import mamba_ssm
 ![network](https://github.com/fuyou-99/MDF_Polyp/blob/main/assets/MDF-Polyp-network.png)
 
 
-
-
-
-
-
-
-## Model Training
-Download dataset [here](https://drive.google.com/drive/folders/1DmyIye4Gc9wwaA7MVKFVi-bWD2qQb-qN?usp=sharing) and put them into the `data` folder. U-Mamaba is built on the popular [nnU-Net](https://github.com/MIC-DKFZ/nnUNet) framework. If you want to train U-Mamba on your own dataset, please follow this [guideline](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/dataset_format.md) to prepare the dataset. 
-
 ### Preprocessing
 
 ```bash
 nnUNetv2_plan_and_preprocess -d DATASET_ID --verify_dataset_integrity
 ```
 
-### Train 2D models
-
-- Train 2D `U-Mamba_Bot` model
+### Train models
 
 ```bash
-nnUNetv2_train DATASET_ID 2d all -tr nnUNetTrainerUMambaBot
-```
-
-- Train 2D `U-Mamba_Enc` model
-
-```bash
-nnUNetv2_train DATASET_ID 2d all -tr nnUNetTrainerUMambaEnc
+nnUNetv2_train DATASET_ID 2d all -tr nnUNetTrainerMDF_Polyp
 ```
 
 
 ## Inference
 
-- Predict testing cases with `U-Mamba_Bot` model
+- Predict testing cases with `nnUNetTrainerMDF_Polyp` model
 
 ```bash
-nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_ID -c CONFIGURATION -f all -tr nnUNetTrainerUMambaBot --disable_tta
-```
-
-- Predict testing cases with `U-Mamba_Enc` model
-
-```bash
-nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_ID -c CONFIGURATION -f all -tr nnUNetTrainerUMambaEnc --disable_tta
+nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_ID -c CONFIGURATION -f all -tr nnUNetTrainerMDF_Polyp --disable_tta
 ```
 
 
 ## Remarks
 
-1. Path settings
-
-The default data directory for U-Mamba is preset to U-Mamba/data. Users with existing nnUNet setups who wish to use alternative directories for `nnUNet_raw`, `nnUNet_preprocessed`, and `nnUNet_results` can easily adjust these paths in umamba/nnunetv2/path.py to update your specific nnUNet data directory locations, as demonstrated below:
-
 ```python
 # An example to set other data path,
-base = '/home/user_name/Documents/U-Mamba/data'
+base = '/home/user_name/Documents/MDF_Polyp/data'
 nnUNet_raw = join(base, 'nnUNet_raw') # or change to os.environ.get('nnUNet_raw')
 nnUNet_preprocessed = join(base, 'nnUNet_preprocessed') # or change to os.environ.get('nnUNet_preprocessed')
 nnUNet_results = join(base, 'nnUNet_results') # or change to os.environ.get('nnUNet_results')
 ```
-
 
 
 ## Acknowledgements
